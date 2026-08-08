@@ -3,6 +3,7 @@ import SectionHeading from '../shared/SectionHeading';
 import Icon from '../shared/icons';
 import InteractiveRoot from '../three/InteractiveRoot';
 import { usePrefersReducedMotion } from '../../hooks/useMediaQuery';
+import originTrayPhoto from '../../assets/photos/origin-tray.jpg';
 
 const STEPS = [
   { icon: 'farm', label: 'Farm' },
@@ -46,6 +47,12 @@ export default function Origin() {
             <InteractiveRoot reduceMotion={reduceMotion} />
           </Reveal>
           <Reveal className="origin-showcase-copy" delay={3}>
+            <img
+              className="origin-showcase-photo"
+              src={originTrayPhoto}
+              alt="Whole turmeric fingers with a cut root showing its natural orange-gold flesh, in a wooden tray"
+              loading="lazy"
+            />
             <h3 className="heading-md">A Root Shaped by Soil, Sun and Time</h3>
             <p className="body-lg">
               Turmeric rhizomes are cultivated over a full growing season before being harvested by

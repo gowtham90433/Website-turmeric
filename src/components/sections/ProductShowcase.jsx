@@ -3,6 +3,7 @@ import Reveal from '../shared/Reveal';
 import SectionHeading from '../shared/SectionHeading';
 import LazyMount from '../shared/LazyMount';
 import { usePrefersReducedMotion, useIsMobile } from '../../hooks/useMediaQuery';
+import wholeTurmericPhoto from '../../assets/photos/whole-turmeric-tray.jpg';
 
 const ProductScene = lazy(() => import('../three/ProductScene'));
 
@@ -25,6 +26,7 @@ const PRODUCTS = [
     tag: 'Product 02',
     name: 'Whole Turmeric Finger',
     variant: 'whole',
+    photo: wholeTurmericPhoto,
     features: [
       'Carefully Selected Turmeric Fingers',
       'Naturally Dried',
@@ -75,11 +77,19 @@ export default function ProductShowcase() {
 
         <div className="product-panel">
           <div className="product-panel-visual">
-            <LazyMount style={{ width: '100%', height: '100%' }} placeholder={<div className="product-visual-fallback" />}>
-              <Suspense fallback={<div className="product-visual-fallback" />}>
-                <ProductScene variant={product.variant} reduceMotion={reduceMotion || isMobile} />
-              </Suspense>
-            </LazyMount>
+            {product.photo ? (
+              <img
+                src={product.photo}
+                alt="A tray of whole, naturally dried turmeric fingers"
+                loading="lazy"
+              />
+            ) : (
+              <LazyMount style={{ width: '100%', height: '100%' }} placeholder={<div className="product-visual-fallback" />}>
+                <Suspense fallback={<div className="product-visual-fallback" />}>
+                  <ProductScene variant={product.variant} reduceMotion={reduceMotion || isMobile} />
+                </Suspense>
+              </LazyMount>
+            )}
           </div>
           <div className="product-panel-copy">
             <span className="eyebrow">{product.tag}</span>

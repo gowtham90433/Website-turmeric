@@ -1,10 +1,6 @@
-import { Suspense, lazy } from 'react';
 import Reveal from '../shared/Reveal';
 import Icon from '../shared/icons';
-import LazyMount from '../shared/LazyMount';
-import { usePrefersReducedMotion, useIsMobile } from '../../hooks/useMediaQuery';
-
-const MacroScene = lazy(() => import('../three/MacroScene'));
+import turmericMacro from '../../assets/photos/turmeric-macro-collage.jpg';
 
 const HIGHLIGHTS = [
   { icon: 'seal', title: 'Natural Golden Colour', text: 'A deep, warm hue prized in cuisines and formulations alike.' },
@@ -15,18 +11,17 @@ const HIGHLIGHTS = [
 ];
 
 export default function WhyTurmeric() {
-  const reduceMotion = usePrefersReducedMotion();
-  const isMobile = useIsMobile();
-
   return (
     <section id="why-turmeric" className="section why-section">
       <div className="container why-grid">
         <Reveal className="why-visual">
-          <LazyMount style={{ width: '100%', height: '100%' }} placeholder={<div className="why-visual-fallback" />}>
-            <Suspense fallback={<div className="why-visual-fallback" />}>
-              <MacroScene reduceMotion={reduceMotion || isMobile} />
-            </Suspense>
-          </LazyMount>
+          <img
+            src={turmericMacro}
+            alt="Macro views of whole turmeric fingers, a cut root showing its natural orange-gold flesh, and ground turmeric powder"
+            loading="lazy"
+            width={851}
+            height={1280}
+          />
         </Reveal>
 
         <div className="why-copy">
